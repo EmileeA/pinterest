@@ -6,6 +6,7 @@ const init = () => {
   // firebase keys that you're loading in. This is the method to initialize firebase
   firebase.initializeApp(apiKeys.firebaseKeys);
   // console.log('hi', apiKeys.firebaseKeys);
+  authData.checkLoginStatus();
 };
 
 init();
