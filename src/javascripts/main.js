@@ -17,7 +17,6 @@ const init = () => {
   // console.log('hi', apiKeys.firebaseKeys);
   authData.checkLoginStatus();
   auth.coolLoginButton();
-  auth.loginButton();
   navbar.logoutEvent();
   home.homeMaker();
 };

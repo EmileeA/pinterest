@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import './navbar.scss';
 
 const authDiv = $('#auth');
 const logoutButton = $('#navbar-button-logout');
@@ -18,7 +17,7 @@ const logoutEvent = () => {
         boardsDiv.addClass('hide');
         home.addClass('hide');
       })
-      .catch((err) => console.error('You are still logged in', err));
+      .catch((err) => console.error('Hey You! You are still logged in', err));
   });
 };
 
