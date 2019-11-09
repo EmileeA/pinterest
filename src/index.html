@@ -8,27 +8,29 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="./images/pinterestlogo.png" class="main">interest</a>
+    <a class="navbar-brand" href="#"><img src="./images/pinterestlogo.png" class="main"></a>
     <div class="wrap">
       <div class="search">
-        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-        <button type="submit" class="searchButton">Find</button>
+        <input type="text" class="searchTerm" placeholder="search">
+        <button type="submit" class="searchButton">Search</button>
       </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <button class="nav-link btn btn-danger text text-light hide" id="navbar-button-logout">Logout</button>
+          <button class="nav-link btn btn-danger text text-light" id="navbar-button-logout">Logout</button>
         </li>
       </ul>
     </div>
   </nav>
 
 
-
-  <div id="auth" class="d-flex justify-content-center"></div>
-  <div id="home" class="hide"></div>
-  <div id="boards" class="d-flex justify-content-center">Boards</div>
+  <div id="home"></div>
+  <div id="auth"></div>
+  <div id="boards" > <h1>Boards</h1>
+ <!-- when you print your boards, print to the id "boards-container" -->
+    <div class="d-flex justify-content-center" id="board-container"></div>
+  </div>
   <div id="pins"></div>
 </body>
 </html>
