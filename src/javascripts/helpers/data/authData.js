@@ -15,16 +15,16 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // someone is logged in; we should not see auth component
-      boardsDiv.removeClass('hide');
-      homeDiv.removeClass('hide');
-      logoutNavbar.removeClass('hide');
-      authDiv.addClass('hide');
+      boardsDiv.removeClass('d-none');
+      homeDiv.addClass('d-none');
+      logoutNavbar.removeClass('d-none');
+      authDiv.addClass('d-none');
     } else {
       // nobody is logged in; we should not see boards
-      boardsDiv.addClass('hide');
-      homeDiv.addClass('hide');
-      logoutNavbar.addClass('hide');
-      authDiv.removeClass('hide');
+      boardsDiv.addClass('d-none');
+      homeDiv.removeClass('d-none');
+      logoutNavbar.addClass('d-none');
+      authDiv.removeClass('d-none');
     }
   });
 };
