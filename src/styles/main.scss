@@ -4,6 +4,31 @@ body {
   background-color: lightcyan;
 }
 
+.main {
+  height: 60px;
+  width: 60px;
+}
+
 .hide {
   display: none;
 }
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#home {
+  display: flex;
+  justify-content: center;
+  // margin-bottom: 1em;
+}
+
+#google-auth {
+  margin-top: 1em;
+  display: block;
+  margin: 0px auto;
+  // width: 25%;
+  // height: 25%;
+}
+
