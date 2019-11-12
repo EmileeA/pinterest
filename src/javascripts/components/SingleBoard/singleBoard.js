@@ -1,37 +1,37 @@
 import $ from 'jquery';
 import pinsData from '../../helpers/data/pinsData';
+// import boardData from '../../helpers/data/boardsData';
 
 import './singleBoard.scss';
 import utilities from '../../helpers/utilities';
 
 const backToBoards = (e) => {
   e.preventDefault();
-  $('#boards').removeClass('hide');
-  $('#single-board').addClass('hide');
+  $('#boards').removeClass('d-none');
+  $('#single-board').addClass('d-none');
 };
 
 const showOneBoard = (boardId) => {
-  pinsData.getPins(boardId)
+  pinsData.getMyPins(boardId)
     .then((pins) => {
-      let string = '<div class="row justify-content-between"><h1>Pins</h1>';
-      string += '<button class="btn btn-success" id="all-boards">See all boards</button></div>';
-      string += '<div class="row">';
+      let domString = '<div class="row justify-content-between"><h1>Pins</h1>';
+      domString += '<button class="btn btn-success" id="all-boards">Back to Boards</button></div>';
+      domString += '<div class="row">';
       pins.forEach((pin) => {
-        string += `
+        domString += `
         <div class="card col-4">
-          <img src="${pin.imgUrl}" class="card-img-top" alt="${pin.name}">
+          <img src="${pin.imageUrl}" class="card-img-top" alt="${pin.pinName}">
           <div class="card-body">
-            <h5 class="card-title">${pin.name}</h5>
-            <p class="card-text">${pin.description}</p>
+            <h5 class="card-title">${pin.pinName}</h5>
           </div>
         </div>
       `;
       });
-      string += '</div>';
-      utilities.printToDom('single-board', string);
+      domString += '</div>';
+      utilities.printToDom('single-board', domString);
       $('#single-board').on('click', '#all-boards', backToBoards);
-      $('#boards').addClass('hide');
-      $('#single-board').removeClass('hide');
+      $('#boards').addClass('d-none');
+      $('#single-board').removeClass('d-none');
     })
     .catch((error) => console.error(error));
 };
