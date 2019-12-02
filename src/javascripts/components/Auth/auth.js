@@ -2,8 +2,10 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import monkeyButBut from './googlelogo.png';
 import utilities from '../../helpers/utilities';
+import monkeyButBut from './googlelogo.png';
+
+const getCurrentUid = () => firebase.auth().currentUser.uid;
 
 const signMeIn = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -18,4 +20,4 @@ const coolLoginButton = () => {
   $('#google-auth').click(signMeIn);
 };
 
-export default { coolLoginButton };
+export default { coolLoginButton, getCurrentUid };

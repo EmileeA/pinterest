@@ -1,0 +1,14 @@
+#boards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1{
+    display: flex;
+    justify-content: center
+  }
+  #board-cards {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}

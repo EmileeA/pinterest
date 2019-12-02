@@ -1,30 +1,31 @@
-import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import $ from 'jquery';
 
-// reaching into the Dom and looking for an ID called auth and setting it to a variable.
-// continued.. so that the element will already be defined and you can use it in the check status function
+import boards from '../../components/Boards/boards';
+import home from '../../components/Home/home';
 
-const homeDiv = $('#home');
-// authDiv is our login button
 const authDiv = $('#auth');
+const homeDiv = $('#home');
 const boardsDiv = $('#boards');
 const logoutNavbar = $('#navbar-button-logout');
 
 const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      // someone is logged in; we should not see auth component
-      boardsDiv.removeClass('d-none');
-      homeDiv.addClass('d-none');
+      // someone is logged in - we should not see auth component
       logoutNavbar.removeClass('d-none');
       authDiv.addClass('d-none');
+      homeDiv.addClass('d-none');
+      boardsDiv.removeClass('d-none');
+      home.homeMaker();
+      boards.printAllBoards(user.uid);
     } else {
-      // nobody is logged in; we should not see boards
-      boardsDiv.addClass('d-none');
-      homeDiv.removeClass('d-none');
+      //  nobody logged in SHOW auth component
       logoutNavbar.addClass('d-none');
       authDiv.removeClass('d-none');
+      homeDiv.removeClass('d-none');
+      boardsDiv.addClass('d-none');
     }
   });
 };
