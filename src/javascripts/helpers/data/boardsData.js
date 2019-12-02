@@ -3,23 +3,30 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getBoards = (id) => new Promise((resolve, reject) => {
-// orderby is a Query on a Firebase request and has to do with whatever is up at firebase.
+const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
+  // orderby is a Query on a Firebase request and has to do with whatever is up at firebase.
 // When you say order by uid you need to ensure that whatever you're getting has an id property on it
-
-  // axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${id}"`)
-  axios.get(`${baseUrl}/boards.json?orderBy="uid"`)
-  // axios is
+  axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      const demBoards = response.data;
+      console.log(response);
+      const daBoards = response.data;
       const boards = [];
-      Object.keys(demBoards).forEach((fbId) => {
-        demBoards[fbId].id = fbId;
-        boards.push(demBoards[fbId]);
+      Object.keys(daBoards).forEach((fbId) => {
+        // console.log(daBoards);
+        daBoards[fbId].id = fbId;
+        boards.push(daBoards[fbId]);
       });
       resolve(boards);
     })
     .catch((error) => reject(error));
 });
 
-export default { getBoards };
+const getBoardByBoardId = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/boards/${boardId}.json`)
+    .then((response) => {
+      resolve((response.data));
+    })
+    .catch((error) => reject(error));
+});
+
+export default { getBoardsByUid, getBoardByBoardId };

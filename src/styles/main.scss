@@ -1,28 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-  background-color: lightcyan;
-}
-
 .main {
   height: 60px;
   width: 60px;
 }
 
-.hide {
+.hide{
   display: none;
+};
+
+.heading{
+  text-align: center;
 }
 
-h1 {
-  display: flex;
-  justify-content: center;
+.board-title{
+  text-align: center;
 }
-
-// #home {
-//   display: flex;
-//   justify-content: center;
-//   // margin-bottom: 1em;
-// }
 
 #google-auth {
   margin-top: 1em;
@@ -31,4 +24,3 @@ h1 {
   // width: 25%;
   // height: 25%;
 }
-

@@ -1,25 +1,20 @@
 import firebase from 'firebase';
-import 'bootstrap';
-
 import auth from './components/Auth/auth';
-import authData from './helpers/data/authData';
-import navbar from './components/Navbar/navbar';
-// import home from './components/Home/home';
-// import board from './components/boards/boards';
-
+import home from './components/Home/home';
 import apiKeys from './helpers/apiKeys.json';
-
+import pinsData from './helpers/data/pinsData';
+import boardsData from './helpers/data/boardsData';
+import authData from './helpers/data/authData';
+import returnToBoards from './components/Boards/returnBoards';
 import '../styles/main.scss';
 
 const init = () => {
-  // firebase keys that you're loading in. This is the method to initialize firebase
   firebase.initializeApp(apiKeys.firebaseKeys);
-  // console.log('hi', apiKeys.firebaseKeys);
-  authData.checkLoginStatus();
-  auth.coolLoginButton();
-  navbar.logoutEvent();
-  // home.homeMaker();
-  // boards.printAllBoards();
+  auth.coolLoginBtn();
+  home.logoutEvent();
+  authData.checkUserLoginStatus();
+  pinsData.getPinsByBoardId('board3');
+  boardsData.getBoardByBoardId('board4').then();
+  returnToBoards.returnToBoards();
 };
-
 init();
