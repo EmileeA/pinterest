@@ -1,39 +1,52 @@
 import $ from 'jquery';
 import pinsData from '../../helpers/data/pinsData';
-// import boardData from '../../helpers/data/boardsData';
-
-import './singleBoard.scss';
+import boardsData from '../../helpers/data/boardsData';
 import utilities from '../../helpers/utilities';
+import './singleBoard.scss';
 
-const backToBoards = (e) => {
+const deletePins = (e) => {
   e.preventDefault();
-  $('#boards').removeClass('d-none');
-  $('#single-board').addClass('d-none');
-};
+  e.stopImmediatePropagation();
+  // the attr method gets the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
 
-const showOneBoard = (boardId) => {
-  pinsData.getMyPins(boardId)
-    .then((pins) => {
-      let domString = '<div class="row justify-content-between"><h1>Pins</h1>';
-      domString += '<button class="btn btn-success" id="all-boards">Back to Boards</button></div>';
-      domString += '<div class="row">';
-      pins.forEach((pin) => {
-        domString += `
-        <div class="card col-4">
-          <img src="${pin.imageUrl}" class="card-img-top" alt="${pin.pinName}">
-          <div class="card-body">
-            <h5 class="card-title">${pin.pinName}</h5>
-          </div>
-        </div>
-      `;
-      });
-      domString += '</div>';
-      utilities.printToDom('single-board', domString);
-      $('#single-board').on('click', '#all-boards', backToBoards);
-      $('#boards').addClass('d-none');
-      $('#single-board').removeClass('d-none');
+  const pinId = $(e.target).attr('id');
+  pinsData.deleteAPin(pinId)
+    .then(() => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const selectedBoardId = $(e.target).attr('boardInfo');
+      // eslint-disable-next-line no-use-before-define
+      selectedBoard(selectedBoardId);
     })
     .catch((error) => console.error(error));
 };
 
-export default { showOneBoard };
+const selectedBoard = (boardId) => {
+  boardsData.getBoardByBoardId(boardId)
+    .then((board) => {
+      pinsData.getPinsByBoardId(boardId)
+        .then((pins) => {
+          console.log('pins', pins);
+          let domString = '<div id="singles" class="d-flex flex-wrap justify-content-between container">';
+          domString += `<p class="board-title">${board.name}</p>`;
+          pins.forEach((pin) => {
+            domString += `<div class="singles-div">
+            <div class="card-body text-center">
+              <h5 class="card-title">${pin.name}</h5>
+              <img src="${pin.imgUrl}" class="card-img-top" alt="...">
+              <button type="button" class="btn btn-danger delete" boardInfo="${pin.boardId}" id=${pin.id}>Delete Me</button>
+              <p class="card-text"></p>
+            </div>
+          </div>`;
+          });
+          utilities.printToDom('boards', '');
+          utilities.printToDom('single', domString);
+        });
+    });
+  const domString = '<button type="button"  class="btn btn-success retBtn">Return Boards</button>';
+  utilities.printToDom('boards2', domString);
+  $('body').on('click', '.delete', (e) => deletePins(e));
+};
+
+
+export default { selectedBoard };

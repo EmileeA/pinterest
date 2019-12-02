@@ -1,38 +1,38 @@
 {
   "pin1": {
     "pinId": "nochew",
-    "pinName": "No Chew Deterrent",
+    "name": "No Chew Deterrent",
     "boardId": "board1",
-    "imageUrl": "https://i.pinimg.com/564x/0c/e3/fe/0ce3fe9c59172822e9860f8d0845068e.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/0c/e3/fe/0ce3fe9c59172822e9860f8d0845068e.jpg"
   },
   "pin2": {
     "pinId": "floss",
-    "pinName": "Tooth Floss",
+    "name": "Tooth Floss",
     "boardId": "board1",
-    "imageUrl": "https://i.pinimg.com/564x/b9/fa/e4/b9fae4b1d6674f11d08e62e075ec8c47.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/b9/fa/e4/b9fae4b1d6674f11d08e62e075ec8c47.jpg"
   },
   "pin3": {
     "pinId": "country",
     "pinName": "Country Music",
     "boardId": "board1",
-    "imageUrl": "https://i.pinimg.com/564x/55/78/7d/55787dae885a9cb061731a9e84789ae2.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/55/78/7d/55787dae885a9cb061731a9e84789ae2.jpg"
   },
   "pin4": {
     "pinId": "mario",
     "pinName": "Mario Kart",
     "boardId": "board2",
-    "imageUrl": "https://i.pinimg.com/564x/d5/15/6c/d5156ce154347f357ae8c3240c8ea236.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/d5/15/6c/d5156ce154347f357ae8c3240c8ea236.jpg"
   },
   "pin5": {
     "pinId": "neil",
     "pinName": "Neil Spin The Bottle",
     "boardId": "board2",
-    "imageUrl": "https://i.pinimg.com/564x/ec/d9/5b/ecd95bbc19c635d95fc3262153e151ca.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/ec/d9/5b/ecd95bbc19c635d95fc3262153e151ca.jpg"
   },
   "pin6": {
     "pinId": "appendix",
     "pinName": "Killer Appendix",
     "boardId": "board2",
-    "imageUrl": "https://i.pinimg.com/564x/17/93/3e/17933eb199918ec929959e6c3da9fbc6.jpg"
+    "imgUrl": "https://i.pinimg.com/564x/17/93/3e/17933eb199918ec929959e6c3da9fbc6.jpg"
   }
 }

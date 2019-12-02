@@ -1,33 +1,30 @@
+import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import $ from 'jquery';
-
 import boards from '../../components/Boards/boards';
-import home from '../../components/Home/home';
 
 const authDiv = $('#auth');
-const homeDiv = $('#home');
 const boardsDiv = $('#boards');
-const logoutNavbar = $('#navbar-button-logout');
+const logoutBtn = $('#logout');
+const titleDiv = $('#title');
 
-const checkLoginStatus = () => {
+const checkUserLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // someone is logged in - we should not see auth component
-      logoutNavbar.removeClass('d-none');
-      authDiv.addClass('d-none');
-      homeDiv.addClass('d-none');
-      boardsDiv.removeClass('d-none');
-      home.homeMaker();
-      boards.printAllBoards(user.uid);
+      authDiv.addClass('hide');
+      boardsDiv.removeClass('hide');
+      logoutBtn.removeClass('hide');
+      titleDiv.addClass('hide');
+      boards.buildBoards(user.uid);
     } else {
       //  nobody logged in SHOW auth component
-      logoutNavbar.addClass('d-none');
-      authDiv.removeClass('d-none');
-      homeDiv.removeClass('d-none');
-      boardsDiv.addClass('d-none');
+      authDiv.removeClass('hide');
+      titleDiv.removeClass('hide');
+      logoutBtn.addClass('hide');
+      boardsDiv.addClass('hide');
     }
   });
 };
 
-export default { checkLoginStatus };
+export default { checkUserLoginStatus };
