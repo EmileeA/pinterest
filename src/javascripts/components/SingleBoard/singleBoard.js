@@ -8,7 +8,6 @@ const deletePins = (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
   // the attr method gets the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
-
   const pinId = $(e.target).attr('id');
   pinsData.deleteAPin(pinId)
     .then(() => {
@@ -26,7 +25,7 @@ const selectedBoard = (boardId) => {
     .then((board) => {
       pinsData.getPinsByBoardId(boardId)
         .then((pins) => {
-          console.log('pins', pins);
+          // console.log('pins', pins);
           let domString = '<div id="singles" class="d-flex flex-wrap justify-content-between container">';
           domString += `<p class="board-title">${board.name}</p>`;
           pins.forEach((pin) => {

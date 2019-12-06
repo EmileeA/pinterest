@@ -5,6 +5,7 @@ import './boards.scss';
 import boardsData from '../../helpers/data/boardsData';
 import selectedBoard from '../SingleBoard/singleBoard';
 import utilities from '../../helpers/utilities';
+// import pinsData from '../../helpers/data/pinsData';
 
 
 const displayPins = (e) => {
