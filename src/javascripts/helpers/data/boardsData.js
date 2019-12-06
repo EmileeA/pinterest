@@ -31,5 +31,12 @@ const getBoardByBoardId = (boardId) => new Promise((resolve, reject) => {
 
 // axios call to delete a board by Id
 const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
+// post axios call to speak to firebase for the create
+const createNewBoard = (newBoard) => axios.post(`${baseUrl}/boards.json`, newBoard);
 
-export default { getBoardsByUid, getBoardByBoardId, deleteBoard };
+export default {
+  getBoardsByUid,
+  getBoardByBoardId,
+  deleteBoard,
+  createNewBoard,
+};
