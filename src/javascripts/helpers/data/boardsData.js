@@ -8,7 +8,7 @@ const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
 // When you say order by uid you need to ensure that whatever you're getting has an id property on it
   axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       const daBoards = response.data;
       const boards = [];
       Object.keys(daBoards).forEach((fbId) => {
@@ -29,4 +29,7 @@ const getBoardByBoardId = (boardId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getBoardsByUid, getBoardByBoardId };
+// axios call to delete a board by Id
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
+
+export default { getBoardsByUid, getBoardByBoardId, deleteBoard };

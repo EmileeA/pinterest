@@ -33,7 +33,7 @@ const selectedBoard = (boardId) => {
             <div class="card-body text-center">
               <h5 class="card-title">${pin.name}</h5>
               <img src="${pin.imgUrl}" class="card-img-top" alt="...">
-              <button type="button" class="btn btn-danger delete" boardInfo="${pin.boardId}" id=${pin.id}>Delete Me</button>
+              <button type="button" class="btn btn-danger delete" boardInfo="${pin.boardId}" id=${pin.id}>Delete</button>
               <p class="card-text"></p>
             </div>
           </div>`;
@@ -42,7 +42,7 @@ const selectedBoard = (boardId) => {
           utilities.printToDom('single', domString);
         });
     });
-  const domString = '<button type="button"  class="btn btn-success retBtn">Return Boards</button>';
+  const domString = '<button type="button"  class="btn btn-success retBtn">Back</button>';
   utilities.printToDom('boards2', domString);
   $('body').on('click', '.delete', (e) => deletePins(e));
 };
