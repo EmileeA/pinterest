@@ -28,7 +28,12 @@ const deleteABoard = (e) => {
 };
 
 const createNewBoard = (e) => {
+  // console.log('createNewBoard');
   e.stopImmediatePropagation();
+  $('#exampleModal1').modal('show');
+};
+
+const saveNewBoard = () => {
   const { uid } = firebase.auth().currentUser;
   const newBoard = {
     name: $('#board-name').val(),
@@ -38,7 +43,6 @@ const createNewBoard = (e) => {
   };
   boardsData.createNewBoard(newBoard)
     .then(() => {
-      $('#exampleModal').modal('hide');
       // eslint-disable-next-line no-use-before-define
       buildBoards(uid);
     })
@@ -50,7 +54,7 @@ const buildBoards = () => {
   boardsData.getBoardsByUid(uid)
     .then((boards) => {
       let domString = '<h2 class="heading">Boards</h2>';
-      domString += '<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">Create Board</button>';
+      domString += '<button type="button" id="create-new-board" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">Create Board</button>';
       domString += '<div id="board-section" class="d-flex flex-wrap">';
       boards.forEach((board) => {
         domString += `<div id="${board.id}" class="card-boards">
@@ -65,8 +69,8 @@ const buildBoards = () => {
       utilities.printToDom('boards', domString);
       $('#boards').on('click', '.show-pins', displayPins);
       $('#boards').on('click', '.delete-board', deleteABoard);
-      $('#boards').on('click', '.add-board', createNewBoard);
-      $('#add-new-board').click(createNewBoard);
+      $('#create-new-board').click(createNewBoard);
+      $('#save-new-board').click(saveNewBoard);
     })
     .catch((error) => console.error(error));
 };
