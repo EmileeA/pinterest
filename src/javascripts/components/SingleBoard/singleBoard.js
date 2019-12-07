@@ -8,7 +8,6 @@ const deletePins = (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
   // the attr method gets the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
-
   const pinId = $(e.target).attr('id');
   pinsData.deleteAPin(pinId)
     .then(() => {
@@ -26,7 +25,7 @@ const selectedBoard = (boardId) => {
     .then((board) => {
       pinsData.getPinsByBoardId(boardId)
         .then((pins) => {
-          console.log('pins', pins);
+          // console.log('pins', pins);
           let domString = '<div id="singles" class="d-flex flex-wrap justify-content-between container">';
           domString += `<p class="board-title">${board.name}</p>`;
           pins.forEach((pin) => {
@@ -34,7 +33,7 @@ const selectedBoard = (boardId) => {
             <div class="card-body text-center">
               <h5 class="card-title">${pin.name}</h5>
               <img src="${pin.imgUrl}" class="card-img-top" alt="...">
-              <button type="button" class="btn btn-danger delete" boardInfo="${pin.boardId}" id=${pin.id}>Delete Me</button>
+              <button type="button" class="btn btn-danger delete" boardInfo="${pin.boardId}" id=${pin.id}>Delete</button>
               <p class="card-text"></p>
             </div>
           </div>`;
@@ -43,7 +42,7 @@ const selectedBoard = (boardId) => {
           utilities.printToDom('single', domString);
         });
     });
-  const domString = '<button type="button"  class="btn btn-success retBtn">Return Boards</button>';
+  const domString = '<button type="button"  class="btn btn-success retBtn">Back</button>';
   utilities.printToDom('boards2', domString);
   $('body').on('click', '.delete', (e) => deletePins(e));
 };
