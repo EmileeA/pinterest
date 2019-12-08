@@ -1,8 +1,29 @@
 import $ from 'jquery';
+import firebase from 'firebase';
+import 'firebase/auth';
 import pinsData from '../../helpers/data/pinsData';
 import boardsData from '../../helpers/data/boardsData';
 import utilities from '../../helpers/utilities';
 import './singleBoard.scss';
+
+const addNewPin = (e) => {
+  e.stopImmediatePropagation();
+  const { uid } = firebase.auth().currentUser;
+  const newPin = {
+    name: $('#pin-name').val(),
+    boardId: $('.board-title')[0].id,
+    url: $('#url').val(),
+    imgUrl: $('#pin-image-url').val(),
+    uid,
+  };
+  pinsData.addNewPin(newPin)
+    .then(() => {
+      $('#exampleModal').modal('hide');
+      // eslint-disable-next-line no-use-before-define
+      selectedBoard('boardId');
+    })
+    .catch((error) => console.error(error));
+};
 
 const deletePins = (e) => {
   e.preventDefault();
@@ -42,9 +63,11 @@ const selectedBoard = (boardId) => {
           utilities.printToDom('single', domString);
         });
     });
-  const domString = '<button type="button"  class="btn btn-success retBtn">Back</button>';
+  let domString = '<button type="button"  class="btn btn-success retBtn">Back</button>';
+  domString += '<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add</button>';
   utilities.printToDom('boards2', domString);
   $('body').on('click', '.delete', (e) => deletePins(e));
+  $('#add-new-pin').click(addNewPin);
 };
 
 
