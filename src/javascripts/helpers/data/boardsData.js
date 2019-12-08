@@ -24,7 +24,7 @@ const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
 const getBoardByBoardId = (boardId) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards/${boardId}.json`)
     .then((response) => {
-      resolve((response.data));
+      resolve(response.data);
     })
     .catch((error) => reject(error));
 });
