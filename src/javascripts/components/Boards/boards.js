@@ -45,7 +45,7 @@ const saveNewBoard = () => {
   boardsData.createNewBoard(newBoard)
     .then(() => {
       // eslint-disable-next-line no-use-before-define
-      buildBoards(uid);
+      buildBoards();
     })
     .catch((error) => console.error(error));
 };
