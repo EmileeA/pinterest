@@ -27,6 +27,7 @@ const deleteABoard = (e) => {
     .catch((error) => console.error(error));
 };
 
+
 const createNewBoard = (e) => {
   // console.log('createNewBoard');
   e.stopImmediatePropagation();
