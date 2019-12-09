@@ -9,6 +9,7 @@ import './singleBoard.scss';
 const addNewPin = (e) => {
   e.stopImmediatePropagation();
   const { uid } = firebase.auth().currentUser;
+  // !!!!!!!!!!! $('.addPinOnBoard').find('id');
   const newPin = {
     name: $('#pin-name').val(),
     boardId: $('.board-title')[0].id,
@@ -69,6 +70,8 @@ const selectedBoard = (boardId) => {
   $('body').on('click', '.delete', (e) => deletePins(e));
   $('#add-new-pin').click(addNewPin);
 };
+
+
 
 
 export default { selectedBoard };

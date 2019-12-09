@@ -30,4 +30,8 @@ const bothPinAndBoard = (boardId) => {
 };
 
 
-export default { getPinsByBoardId, deleteAPin, bothPinAndBoard };
+export default {
+  getPinsByBoardId,
+  deleteAPin,
+  bothPinAndBoard,
+};

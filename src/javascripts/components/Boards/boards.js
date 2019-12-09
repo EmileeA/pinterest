@@ -64,6 +64,7 @@ const buildBoards = () => {
           <p class="card-text"${board.uid}></p>
           <button type="button" id="${board.id}" class="btn btn-danger delete-board">Delete</button>
           <button type="button" id="${board.id}" class="btn btn-primary show-pins">View</button>
+          <button type="button" id="${board.id}" class="btn btn-primary edit-board">Edit</button>
         </div>
       </div>`;
       });
