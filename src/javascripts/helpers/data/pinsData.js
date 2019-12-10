@@ -29,9 +29,13 @@ const bothPinAndBoard = (boardId) => {
     });
 };
 
+// "updatedPin" is the updated object
+const updatedPinToBoard = (pinId, updatedPin) => axios.put(`${baseUrl}/pins/${pinId}.json`, updatedPin);
+
 
 export default {
   getPinsByBoardId,
   deleteAPin,
   bothPinAndBoard,
+  updatedPinToBoard,
 };

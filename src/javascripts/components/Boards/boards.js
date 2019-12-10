@@ -64,7 +64,7 @@ const buildBoards = () => {
           <p class="card-text"${board.uid}></p>
           <button type="button" id="${board.id}" class="btn btn-danger delete-board">Delete</button>
           <button type="button" id="${board.id}" class="btn btn-primary show-pins">View</button>
-          <button type="button" id="${board.id}" class="btn btn-primary edit-board">Edit</button>
+
         </div>
       </div>`;
       });
@@ -73,8 +73,11 @@ const buildBoards = () => {
       $('#boards').on('click', '.delete-board', deleteABoard);
       $('#create-new-board').click(createNewBoard);
       $('#save-new-board').click(saveNewBoard);
+      // // $('.show-pins').on('click', '.edit-pin-and-board', buildBoards);
     })
     .catch((error) => console.error(error));
 };
 
 export default { buildBoards };
+
+// <button type="button" id="${board.id}" class="btn btn-primary edit-pin-and-board">Edit</button>
