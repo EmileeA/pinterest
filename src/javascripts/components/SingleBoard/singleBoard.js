@@ -23,6 +23,17 @@ const updatedPin = (e) => {
   pinsData.updatedPinToBoard(pinId, updateAPin);
 };
 
+const populateUpdateModal = (id) => {
+  pinsData.getPinById(id)
+    .then((response) => {
+      $('#pin-name').val(response.name);
+      $('.board-title').val(response.id);
+      $('#url').val(response.url);
+      $('#pin-image-url').val(response.imgUrl);
+    })
+    .catch((error) => console.error(error));
+};
+
 const buildUpdateModal = (e) => {
   console.log('buildUpdateModal running...');
   // we are separting edit- from the id by using split.
@@ -62,6 +73,7 @@ const buildUpdateModal = (e) => {
   $('#switchBoardModal').modal('show');
   // updatedPin will get the pinId event
   $(`#${pinId}`).click(updatedPin);
+  populateUpdateModal(pinId);
 };
 
 const addNewPin = (e) => {
