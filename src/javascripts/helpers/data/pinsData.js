@@ -29,5 +29,23 @@ const bothPinAndBoard = (boardId) => {
     });
 };
 
+const getPinById = (id) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/pins/${id}.json`)
+    .then((response) => {
+      console.log(response);
+      resolve(response.data);
+    })
+    .catch((error) => reject(error));
+});
 
-export default { getPinsByBoardId, deleteAPin, bothPinAndBoard };
+// "updatedPin" is the updated object
+const updatedPinToBoard = (pinId, updatedPin) => axios.put(`${baseUrl}/pins/${pinId}.json`, updatedPin);
+
+
+export default {
+  getPinsByBoardId,
+  deleteAPin,
+  bothPinAndBoard,
+  updatedPinToBoard,
+  getPinById,
+};
