@@ -26,10 +26,10 @@ const updatedPin = (e) => {
 const populateUpdateModal = (id) => {
   pinsData.getPinById(id)
     .then((response) => {
-      $('#pin-name').val(response.name);
+      $('#edit-pin-name').val(response.name);
       $('.board-title').val(response.id);
-      $('#url').val(response.url);
-      $('#pin-image-url').val(response.imgUrl);
+      $('.edit-pin-board').val(response.boardId);
+      $('#edit-pin-image').val(response.imgUrl);
     })
     .catch((error) => console.error(error));
 };
@@ -37,6 +37,7 @@ const populateUpdateModal = (id) => {
 const buildUpdateModal = (e) => {
   console.log('buildUpdateModal running...');
   // we are separting edit- from the id by using split.
+  // // emilee you need to use the correct id's below on populateUpdateModal
   const pinId = e.target.id.split('edit-')[1];
   const domString = `<div class="modal fade" id="switchBoardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -51,11 +52,11 @@ const buildUpdateModal = (e) => {
         <div id="switch-board-div"></div>
         <div class="form-group">
           <label for="edit-pin-name">Name</label>
-          <input type="text" class="form-control" id="edit-pin-name" placeholder="Enter ">
+          <input type="text" class="form-control" id="edit-pin-name" placeholder="Enter Pin Name">
         </div>
         <div class="form-group">
-          <label for="edit-pin-description">Description</label>
-          <input type="text" class="form-control" id="edit-pin-description" placeholder="Enter Description ">
+          <label for="edit-pin-board">Board</label>
+          <input type="text" class="form-control" id="edit-pin-board" placeholder="Enter board">
         </div>
         <div class="form-group">
           <label for="edit-pin-image">Image URL</label>
